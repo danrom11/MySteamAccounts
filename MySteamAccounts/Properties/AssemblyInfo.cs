@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("MySteamAccounts")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("My Steam Accounts")]
+[assembly: AssemblyDescription("Add it, get your accounts up to speed, get it up and running fast")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MySteamAccounts")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyProduct("My Steam Accounts")]
+[assembly: AssemblyCopyright("Copyright ©  2022 by danrom11")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

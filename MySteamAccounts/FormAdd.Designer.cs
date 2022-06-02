@@ -67,6 +67,7 @@
             this.textBoxPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxPassword.Location = new System.Drawing.Point(12, 110);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '•';
             this.textBoxPassword.Size = new System.Drawing.Size(328, 26);
             this.textBoxPassword.TabIndex = 5;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

@@ -77,8 +77,7 @@ namespace MySteamAccounts
                 for (int m = 3; m < content.Length; m++)
                     information[m - 3] = content[m];
                 
-                masFiles masF = new masFiles(content[0], content[1], content[2], information);
-                Accounts.Add(masF);
+                Accounts.Add(new masFiles(content[0], content[1], content[2], information));
                 listBoxAccounts.Items.Add(Accounts[i].login);
             }
         }

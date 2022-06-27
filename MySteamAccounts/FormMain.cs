@@ -109,6 +109,7 @@ namespace MySteamAccounts
         {
             if (WindowState == FormWindowState.Minimized)
             {
+                collapseMenu.Items.Clear();
                 this.Hide();
                 Collapse.Visible = true;
                 Collapse.ShowBalloonTip(1000);

@@ -104,5 +104,40 @@ namespace MySteamAccounts
             if(selectedIndex > -1)             
                 MySteamAccounts.FilesSystem.StartSteam(Accounts[selectedIndex].login, Accounts[selectedIndex].crypto == "True" ? Crypto.DecryptStringAES(Accounts[selectedIndex].password, "MySteamAccounts") : Accounts[selectedIndex].password, pathSteam);
         }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                Collapse.Visible = true;
+                Collapse.ShowBalloonTip(1000);
+
+                for(int i = 0; i < Accounts.Count; i++)
+                {
+                    ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem(Accounts[i].login);
+                    toolStripMenuItem.Name = i.ToString();
+                    toolStripMenuItem.Click += ToolStripMenuItem_Click;
+                    collapseMenu.Items.Add(toolStripMenuItem);
+                }
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                Collapse.Visible = false;
+            }
+        }
+
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32((sender as ToolStripItem).Name);        
+            MySteamAccounts.FilesSystem.StartSteam(Accounts[index].login, Accounts[index].crypto == "True" ? Crypto.DecryptStringAES(Accounts[index].password, "MySteamAccounts") : Accounts[index].password, pathSteam);
+        }
+
+        private void Collapse_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            Collapse.Visible = false;
+            WindowState = FormWindowState.Normal;
+        }
     }
 }

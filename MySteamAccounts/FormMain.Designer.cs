@@ -38,6 +38,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBoxInformation = new System.Windows.Forms.GroupBox();
             this.textBoxInformation = new System.Windows.Forms.TextBox();
+            this.Collapse = new System.Windows.Forms.NotifyIcon(this.components);
+            this.collapseMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStripListBox.SuspendLayout();
             this.groupBoxInformation.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +140,22 @@
             this.textBoxInformation.Size = new System.Drawing.Size(287, 308);
             this.textBoxInformation.TabIndex = 0;
             // 
+            // Collapse
+            // 
+            this.Collapse.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.Collapse.BalloonTipText = "приложение ещё работает";
+            this.Collapse.BalloonTipTitle = "MySteamAccounts";
+            this.Collapse.ContextMenuStrip = this.collapseMenu;
+            this.Collapse.Icon = ((System.Drawing.Icon)(resources.GetObject("Collapse.Icon")));
+            this.Collapse.Text = "MySteamAccounts";
+            this.Collapse.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Collapse_MouseDoubleClick);
+            // 
+            // collapseMenu
+            // 
+            this.collapseMenu.Name = "collapseMenu";
+            this.collapseMenu.ShowImageMargin = false;
+            this.collapseMenu.Size = new System.Drawing.Size(36, 4);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,6 +168,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "My Steam Accounts";
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.contextMenuStripListBox.ResumeLayout(false);
             this.groupBoxInformation.ResumeLayout(false);
             this.groupBoxInformation.PerformLayout();
@@ -167,6 +186,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startSteamToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon Collapse;
+        private System.Windows.Forms.ContextMenuStrip collapseMenu;
     }
 }
 

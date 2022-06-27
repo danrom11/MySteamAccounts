@@ -11,14 +11,14 @@ namespace MySteamAccounts
 {
     static internal class FilesSystem
     {
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
-        [DllImport("user32.dll")]
-        private static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
-        [DllImport("user32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        //[DllImport("user32.dll", SetLastError = true)]
+        //private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        //[DllImport("user32.dll", SetLastError = true)]
+        //private static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+        //[DllImport("user32.dll")]
+        //private static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
+        //[DllImport("user32.dll")]
+        //private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         internal static string GetPathSteam()
         {
@@ -29,25 +29,35 @@ namespace MySteamAccounts
 
         internal static void StartSteam(string login, string password, string path)
         {
-            IntPtr steamHandler = FindWindow("vguiPopupWindow", "Вход в Steam");
-            IntPtr steamHandlerEN = FindWindow("vguiPopupWindow", "Steam Login");
-            if (steamHandler == IntPtr.Zero && steamHandlerEN == IntPtr.Zero) 
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo(); 
-                startInfo.FileName = path;
-                startInfo.Arguments = "-login " + login + " " + password;
-                Process.Start(startInfo); 
-                SetForegroundWindow(steamHandler); 
-            }
-            else 
-            {
-                KillProgram(); 
-                ProcessStartInfo startInfo = new ProcessStartInfo(); 
-                startInfo.FileName = path;
-                startInfo.Arguments = "-login " + login + " " + password;
-                Process.Start(startInfo); 
-                SetForegroundWindow(steamHandler);
-            }
+            KillProgram();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = path;
+            startInfo.Arguments = "-login " + login + " " + password;
+            Process.Start(startInfo); 
+
+           // SetForegroundWindow(steamHandler);
+
+            //IntPtr steamHandler = FindWindow("vguiPopupWindow", "Вход в Steam");
+            //IntPtr steamHandlerEN = FindWindow("vguiPopupWindow", "Steam Login");
+            //if (steamHandler == IntPtr.Zero && steamHandlerEN == IntPtr.Zero) 
+            //{
+            //    Console.WriteLine("NO KILL");
+            //    ProcessStartInfo startInfo = new ProcessStartInfo(); 
+            //    startInfo.FileName = path;
+            //    startInfo.Arguments = "-login " + login + " " + password;
+            //    Process.Start(startInfo); 
+            //    SetForegroundWindow(steamHandler); 
+            //}
+            //else 
+            //{
+            //    Console.WriteLine("KILL");
+            //    KillProgram(); 
+            //    ProcessStartInfo startInfo = new ProcessStartInfo(); 
+            //    startInfo.FileName = path;
+            //    startInfo.Arguments = "-login " + login + " " + password;
+            //    Process.Start(startInfo); 
+            //    SetForegroundWindow(steamHandler);
+            //}
         }
 
         private static void KillProgram()
